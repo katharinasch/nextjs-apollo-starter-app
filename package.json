@@ -1,0 +1,43 @@
+{
+  "name": "nextjs-apollo-starter-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "@gogaille/storybook-addon-next-router": "^4.0.0",
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.3",
+    "apollo-boost": "^0.4.9",
+    "apollo-server-micro": "^3.1.2",
+    "graphql": "^15.5.1",
+    "next": "11.0.1",
+    "postcss-loader": "^6.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass-loader": "^12.1.0",
+    "storybook-addon-next-router": "^3.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@storybook/addon-actions": "^6.3.6",
+    "@storybook/addon-essentials": "^6.3.6",
+    "@storybook/addon-links": "^6.3.6",
+    "@storybook/react": "^6.3.6",
+    "autoprefixer": "^9",
+    "babel-loader": "^8.2.2",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.0.1",
+    "postcss": "^7",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.5"
+  }
+}
