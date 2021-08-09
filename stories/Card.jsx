@@ -1,10 +1,13 @@
+import Image from 'next/image'
+
 export const Card = ({ title, source, text, selected, onChange}) => {
   const mode = selected ? 'border-red-300 border-8' : 'border-gray-400'
   return (
     <div className={["relative p-8 bg-white border-gray-200 rounded-2xl shadow-sm flex flex-col border-2", mode].join(' ')} selected={selected} onClick={onChange}>
       <div className="flex-1">
         <h3 className="text-xl font-semibold text-gray-900 mb-10">{title}</h3>
-        <img src={source} alt={text} />
+
+        <Image img src={source} alt={text} width={369} height={492} objectFit="cover"/>
       </div>
     </div>
   );

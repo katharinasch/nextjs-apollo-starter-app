@@ -1,8 +1,13 @@
-import '../styles/globals.css'
-import 'tailwindcss/tailwind.css'
+import "../styles/globals.css";
+import "tailwindcss/tailwind.css";
+import { QuizProvider } from "../context";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <QuizProvider>
+      <Component {...pageProps} />
+    </QuizProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

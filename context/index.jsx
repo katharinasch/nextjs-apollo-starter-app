@@ -1,14 +1,14 @@
 import { useState, createContext, useContext } from "react";
 
-export const QuizContext = createContext();
+const QuizContext = createContext();
 
-export default function QuizProvider({ children }) {
+export function QuizProvider({ children }) {
   const [data, setData] = useState({});
 
   const setQuizValues = (values) => {
     setData((prevValues) => ({
       ...prevValues,
-      ...values,
+      ...values
     }));
   };
 
@@ -18,5 +18,5 @@ export default function QuizProvider({ children }) {
     </QuizContext.Provider>
   );
 }
-
+export default QuizContext;
 export const useQuizData = () => useContext(QuizContext);

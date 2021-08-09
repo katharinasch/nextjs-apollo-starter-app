@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { Card } from "../../stories/Card";
+import QuizContext from "../../context";
 
 const tacos = {
   meat: [
     {
       title: 'yy',
       type: 'Al Pastor',
-      imgURL: 'https://cdn.bbqpit.de/wp-content/uploads/2020/04/17214849/Tacos-al-Pastor.jpg'
+      imgURL: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190130-tacos-al-pastor-horizontal-1-1549571422.png?crop=0.668xw:1.00xh;0.175xw,0&resize=480:*'
     },
     {
       title: 'yy',
@@ -54,12 +56,36 @@ const tacos = {
   ],
 }
 
+// added cathegory into 'arguments'
+
 export const TacoTypes = ({quizStep, prevQuizStep, nextQuizStep}) => {
+  const { data: { cathegory = "" } = {} } = useContext(QuizContext);
+  
+  // defined taco
+  const chosenTacoCathegory = tacos[cathegory.toLowerCase()];
+
     return (
       <div className={quizStep === 1 ? 'block' : 'hidden'}>
-        <div>
-            <p>Taco Types are: all you find in the object</p>
+        <div className="relative max-w-xl mx-auto">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">
+              Let&apos;s get into details. Which of the {cathegory} Tacos are your favourite?
+            </h2>
+          </div>
         </div>
+        <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
+          <div className="mt space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
+            {chosenTacoCathegory.map((item, index) => (
+              <Card
+                role="button"
+                key={index}
+                title={item.type}
+                source={item.imgURL}
+                text={`image of ${item.title} `}
+              />
+            ))}
+          </div>
+      </div>
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
           <div className="rounded-md shadow">
             <a role="button" tabIndex={0}

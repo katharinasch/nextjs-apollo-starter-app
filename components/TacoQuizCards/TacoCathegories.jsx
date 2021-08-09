@@ -1,5 +1,4 @@
 import { Card } from "../../stories/Card";
-import { useQuizData } from "../../context/index"
 import { useState } from "react";
 
 const tacos = [
@@ -18,9 +17,8 @@ const tacos = [
 ]
 
 export const TacoCathegories = ({quizStep, prevQuizStep, nextQuizStep}) => {
-  const { setQuizValues } = useQuizData;
   const [isSelected, setisSelected] = useState();
-  const items = [{text: "Meat"}, {text: "Fish"}, {text: "Veggi"}];
+
 
   const handleSubmit = (values) => {
     setQuizValues(values);
@@ -29,7 +27,7 @@ export const TacoCathegories = ({quizStep, prevQuizStep, nextQuizStep}) => {
   };
 
   return (
-    <div className={quizStep === 0 ? 'block': 'hidden'}>
+    <div className={quizStep === 0 ? 'block' : 'hidden'}>
       <div className="text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">What is your favourite taco group?</h2>
       </div>
@@ -42,13 +40,13 @@ export const TacoCathegories = ({quizStep, prevQuizStep, nextQuizStep}) => {
             title={taco.cathegory}
             source={taco.imgURL}
             text={`image of ${taco.cathegory} `}
-            selected={isSelected === index}
+            selected={ isSelected === index }
             onChange={() => setisSelected(index)}
             />
             
           ))}
         </div>
-        {tacos[isSelected] && <p>{tacos[isSelected].cathegory}</p>}
+        {console.log(typeof(tacos?.[isSelected]?.cathegory))}
         
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
           <div className="rounded-md shadow">
@@ -60,7 +58,8 @@ export const TacoCathegories = ({quizStep, prevQuizStep, nextQuizStep}) => {
           </div>
           <div className="mt-3 sm:mt-0 sm:ml-3">
             <a
-              onClick={nextQuizStep}
+              //onClick={nextQuizStep}
+              onClick={() => nextQuizStep(tacos?.[isSelected]?.cathegory) }
               className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-500 hover:bg-yallow-600 md:py-4 md:text-lg md:px-10"
             >
               Next
