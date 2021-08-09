@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Card } from "../../stories/Card";
 import QuizContext from "../../context";
 
@@ -60,6 +60,7 @@ const tacos = {
 
 export const TacoTypes = ({quizStep, prevQuizStep, nextQuizStep}) => {
   const { data: { cathegory = "" } = {} } = useContext(QuizContext);
+  const [isSelected, setisSelected] = useState();
   
   // defined taco
   const chosenTacoCathegory = tacos[cathegory.toLowerCase()];
@@ -82,6 +83,8 @@ export const TacoTypes = ({quizStep, prevQuizStep, nextQuizStep}) => {
                 title={item.type}
                 source={item.imgURL}
                 text={`image of ${item.title} `}
+                selected={ isSelected === index }
+                onChange={() => setisSelected(index)}
               />
             ))}
           </div>
