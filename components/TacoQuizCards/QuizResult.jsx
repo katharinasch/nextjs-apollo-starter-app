@@ -1,11 +1,17 @@
-import React from 'react'
+import { useContext, useState } from "react";
+import QuizContext from "../../context";
 
 export const QuizResult = ({quizStep, prevQuizStep, nextQuizStep}) => {
+  const { data: { type = "" } = {} } = useContext(QuizContext);
+
+
     return (
         
             <div className={quizStep === 2 ? 'block' : 'hidden'}>
-              <div>
-                  <p>I like chorizo tacos too</p>
+              <div className="relative max-w-xl mx-auto">
+              {type==='Chorizo' ? 
+                <div className="text-center"><h2 className="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl">I like {type} tacos too  🎉!</h2></div> : 
+                <div className="text-center"><h2 className="text-3xl font-extrabold tracking-tight text-gray-600 sm:text-4xl"> Sorry {type} tacos are not my favourite tacos 😭! Try again!</h2></div> }
               </div>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
                 <div className="rounded-md shadow">

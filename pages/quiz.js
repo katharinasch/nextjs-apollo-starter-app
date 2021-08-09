@@ -11,12 +11,9 @@ export default function Quiz() {
   // In this file first I declared a state for cathergory
   const { setQuizValues } = useContext(QuizContext);
 
-  const nextQuizStep = (cathegory) => {
+  const nextQuizStep = (cathegory, type) => {
     setQuizStep((currentStep) => currentStep + 1);
-    // comment 3
-    // in this function cathegory came from TacoCathegories component I stored
-    // that in state setCathegory
-    setQuizValues({ cathegory });
+    setQuizValues({ cathegory, type });
   };
 
   const prevQuizStep = () => setQuizStep((currentStep) => currentStep - 1);
