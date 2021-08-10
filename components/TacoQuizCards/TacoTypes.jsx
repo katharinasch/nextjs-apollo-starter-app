@@ -12,7 +12,7 @@ const tacos = {
     {
       title: 'yy',
       type: 'Barbacoa',
-      imgURL: 'https://images.themodernproper.com/billowy-turkey/production/posts/Slow-Cooker-Barbacoa-Beef-16.jpg?w=667&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1599766756&s=0872078d7239bb30f1f484fa5d76a249'
+      imgURL: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/02/Barbacoa-Tacos-3.jpg'
     },
     {
       title: 'zz',

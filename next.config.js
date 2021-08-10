@@ -4,7 +4,7 @@ module.exports = {
     domains: [
       'images.unsplash.com',
       'www.seriouseats.com',
-      'images.themodernproper.com',
+      'i2.wp.com',
       'hips.hearstapps.com',
       'juegoscocinarpasteleria.org',
       'www.cookingclassy.com',
