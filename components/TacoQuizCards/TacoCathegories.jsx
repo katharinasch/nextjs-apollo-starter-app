@@ -46,8 +46,6 @@ export const TacoCathegories = ({quizStep, prevQuizStep, nextQuizStep}) => {
             
           ))}
         </div>
-        {console.log(typeof(tacos?.[isSelected]?.cathegory))}
-        
         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
           <div className="rounded-md shadow">
             <a role="button" tabIndex={0}
