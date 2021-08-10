@@ -19,12 +19,8 @@ export const Navigation = () => {
                     key={item.name}
                     href={item.url}
                     text={item.name}
-                    className={`px-3 py-2 rounded-md text-sm font-medium
-                    ${
-                        router.asPath === item.url ? "bg-gray-900 text-white" : 'text-gray-300 hover:text-gray-700' 
-                    }`}
+                    active={router.asPath === item.url}
                 /> 
-
             ))}
         </div>
     )

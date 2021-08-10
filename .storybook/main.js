@@ -5,9 +5,11 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
+    "storybook-addon-next-router",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    '@storybook/preset-create-react-app',
+    '@storybook/preset-create-react-app'
+    
   ],
   
 }

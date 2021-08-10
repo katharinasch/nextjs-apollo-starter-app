@@ -7,7 +7,7 @@ export const Card = ({ title, source, text, selected, onChange}) => {
       <div className="flex-1">
         <h3 className="text-xl font-semibold text-gray-900 mb-10">{title}</h3>
 
-        <Image img src={source} alt={text} width={369} height={492} objectFit="cover"/>
+        <Image src={source} alt={text} width={369} height={492} objectFit="cover"/>
       </div>
     </div>
   );

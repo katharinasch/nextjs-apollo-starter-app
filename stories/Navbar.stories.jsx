@@ -1,15 +1,26 @@
-import {NavbarWithoutRouter} from './Navbar';
+import {Navbar} from './Navbar';
 
 export default {
     title: 'Example/Navbar',
-    component: NavbarWithoutRouter,
+    component: Navbar,
   };
 
 
 export const DefautlNavbar = () => {
   return (
-    <NavbarWithoutRouter />
+    <Navbar />
   )
 }
+
+DefautlNavbar.story = {
+  parameters: {
+    nextRouter: {
+      path: "/",
+      asPath: "/",
+
+    },
+  },
+};
+
 
 

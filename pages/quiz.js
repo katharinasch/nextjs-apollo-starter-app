@@ -11,7 +11,7 @@ export default function Quiz() {
   // In this file first I declared a state for cathergory
   const { setQuizValues } = useContext(QuizContext);
 
-  const nextQuizStep = (cathegory, type) => {
+  const nextQuizStep = (cathegory, type='') => {
     setQuizStep((currentStep) => currentStep + 1);
     setQuizValues({ cathegory, type });
   };

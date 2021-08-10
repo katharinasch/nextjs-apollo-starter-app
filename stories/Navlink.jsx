@@ -7,7 +7,7 @@ export const Navlink = ({ active, text, ...props }) => {
   return (
     <div className="pflex space-x-4 justify-self-center">
       <a
-        className={['px-3 py-2 rounded-md text-sm font-medium', mode].join(' ')}
+        className={`px-3 py-2 rounded-md text-sm font-medium ${mode}`}
         {...props}
       >
         {text}
