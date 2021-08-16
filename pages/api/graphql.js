@@ -2,6 +2,7 @@
 
 import { ApolloServer, gql } from 'apollo-server-micro';
 import Cors from 'micro-cors';
+import useSWR from 'swr'
 
 const cors = Cors();
 
@@ -81,43 +82,37 @@ const typeDefs = gql`
     like: Boolean
     imgURL: String
   }
+
 # We've defined the objects that exist in our data graph, but clients don't yet have a way to fetch those objects. 
 # Query defines available queries for clients to execute
+
   type Query {
-    # tacos has the list of taco, meaning tacos consist of, cat, type, imgURL, included in Taco type above
-    # Возвращает записи типа Taco
-    tacos: [Taco]
+    # tacos has the list of [Taco], meaning tacos consist of, cat, type, imgURL, included in Taco type above
+    # Returns queries of type Taco
+    tacos(cathegory: String, like: Boolean): [Taco]
   }
 `;
 
-/* Даже самый лучший в мире личный помощник не сможет
-принести ваши вещи из химчистки если вы не дадите ему адрес.
-
-
-Подобным образом, сервер GraphQL не может знать
-что делать с входящим запросом, если ему не объяснить
-при помощи распознавателя (resolver). */
-
+// resolver (распознаватель) - 'explains' the GraphQL Server, what to do with the query
 // How are we going to return the values
 // Resolvers need to match the structure of type definitions
 // Query is a nested object and represents type
+// Query — запрос на чтение
+// resolver — what to do, when Query or Mutation happens
+// Resolvers can return objects or scalars like Strings, Numbers, Booleans, etc.
 const resolvers = {
   Query: {
     // распознаватель помещен в раздел Query
-/*     tacos: (parent, { cathegory }, context, info) => {
-      return taco.find(taco => taco.cathegory === cathegory);
-    }, */
-    /* tacoType: (parent, { type }, context, info) => {
-      return tacos.find(taco => taco.type === type);
+    tacos: (parent, args, context, info) => {
+      return tacos.filter((taco) => {
+        if(Reflect.has(args, 'like')) {
+          return taco.cathegory === args.cathegory && taco.like === args.like;
+        }
+        return taco.cathegory === args.cathegory;
+        })
     },
-    tacoFav: (parent, { like }, context, info) => {
-      return tacos.find(taco => taco.like === like);
-    },
-    tacoPic: (parent, { imgURL }, context, info) => {
-      return tacos.find(taco => taco.imgURL === imgURL);
-    }, */
   },
-};
+}
 
 const corsHandler = async (req, res) => {
   const server = new ApolloServer({ typeDefs, resolvers });
@@ -143,32 +138,12 @@ export const config = {
 export default cors(corsHandler)
 
 /* const { data, error } = useSWR(gql`
-  query getCart(
-    $id: String!
-  ) {
-    cart(id: $id) {
-      items {
-        id
-        name
-        price {
-          amountInCent
-          currency
-        }
-        quantity
-        slug
-        sku
-        images {
-          urls {
-            md
-          }
-        }
-      }
-      totalPrice {
-        amountInCent
-        currency
-      }
-    }
+  query getCathegory ($cathecory: String, $like: Boolean ) {
+  tacos(cathegory:$cathecory, like: $like ) {
+    like
+    type
   }
+}
 `, fetcher);
 
 const fetcher = (query, cathegory) => request('/api/graphql', query, {cathegory});
@@ -187,14 +162,4 @@ const reqstOptions = {
   const restOptions = {
   cathegory
   }
-
-
-  function createhandler(args) {
-    // some operation ...
-      return someOtherHandlerFunctioToBeReturned
-  }
-  someOtherHandlerFunctioToBeReturned (req, res ) {
-  // some handler req res specific operations
-  // Probably promise to be returned
-  return Promise()
-  } */
+ */
